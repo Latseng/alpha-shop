@@ -1,0 +1,30 @@
+.progress-control {
+  border-top: 1px solid #E6E6EB;
+  margin-top: 20px;
+  padding-top: 26px;
+  display: flex;
+  justify-content: space-between;
+}
+.progress-control button {
+  cursor: pointer;
+}
+.progress-control .prev {
+  display: flex;
+  align-items: center;
+  height: 46px;
+  border: none;
+  background-color: white;
+}
+.progress-control .prev p {
+  font-size: 12px;
+  margin-left: 8px;
+}
+.progress-control .next {
+  font-size: 14px;
+  width: 174px;
+  height: 46px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #F67599;
+}/*# sourceMappingURL=ProgressControl.css.map */

@@ -1,0 +1,42 @@
+h3.form-title {
+        font-size: 24px;
+    }
+
+div.form-input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .form-row {
+    margin-bottom: 24px;
+    >label {
+    display: inline-block;
+    margin-bottom: 6px;
+    font-weight: 400;
+    color: #808080;
+;
+  }
+  
+  input {
+    padding-left: 16px;
+    display: block;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    
+  }
+  }
+  .card-name, .card-number {
+    width: 100%;
+    input {
+      width: 70%;
+      height: 40px;
+    }
+  }
+  .date, .code {
+    width: 46%;
+    input {
+      width: 94%;
+      height: 40px;
+    }
+  }
+    }

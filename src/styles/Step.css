@@ -1,0 +1,39 @@
+h3.form-title {
+  font-size: 24px;
+}
+
+div.form-input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+div.form-input .form-row {
+  margin-bottom: 24px;
+}
+div.form-input .form-row > label {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-weight: 400;
+  color: #808080;
+}
+div.form-input .form-row input {
+  padding-left: 16px;
+  display: block;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 16px;
+}
+div.form-input .card-name, div.form-input .card-number {
+  width: 100%;
+}
+div.form-input .card-name input, div.form-input .card-number input {
+  width: 70%;
+  height: 40px;
+}
+div.form-input .date, div.form-input .code {
+  width: 46%;
+}
+div.form-input .date input, div.form-input .code input {
+  width: 94%;
+  height: 40px;
+}/*# sourceMappingURL=Step.css.map */
