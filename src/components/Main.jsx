@@ -1,7 +1,7 @@
 
 const Main = ({children}) => {
   return (
-    <div>
+    <div className="flex">
       {children}
     </div>
   );
