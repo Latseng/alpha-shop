@@ -16,7 +16,7 @@ const products = [
   },
 ];
 
-const ProductItem = () => {
+const ProductItem = ({amount, handleClick}) => {
   return (
     <>
       {products.map((product) => (
@@ -24,8 +24,8 @@ const ProductItem = () => {
           <img className="w-24 rounded-lg" src={product.img} />
           <div class="ml-8">
             <span className="product-name">{product.name}</span>
-            <div className="mt-4">
-              <button className="mr-12 w-6 h-6 text-center font-semibold bg-[#e5e5e5] rounded-full inline-block">
+            <div className="mt-4" onClick={handleClick}>
+              <button className="reduce mr-12 w-6 h-6 text-center font-semibold bg-[#e5e5e5] rounded-full inline-block">
                 <svg
                   className="mx-auto block"
                   width="12"
@@ -45,8 +45,8 @@ const ProductItem = () => {
                   />
                 </svg>
               </button>
-              <span className="mr-12">1</span>
-              <button className="mr-12 w-6 h-6 font-semibold bg-[#e5e5e5] rounded-full inline-block">
+              <span className="mr-12">{amount}</span>
+              <button className="increase mr-12 w-6 h-6 font-semibold bg-[#e5e5e5] rounded-full inline-block">
                 <svg
                   className="mx-auto block"
                   width="12"
@@ -72,5 +72,5 @@ const ProductItem = () => {
       ))}
     </>
   );
-}
+};
 export default ProductItem
