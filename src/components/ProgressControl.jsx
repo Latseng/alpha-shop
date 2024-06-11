@@ -1,5 +1,4 @@
 import leftArrow from "../assets/icon/left-arrow.svg"
-// import "../styles/ProgressControl.css"
 
 const ProgressControl = () => {
   return (
