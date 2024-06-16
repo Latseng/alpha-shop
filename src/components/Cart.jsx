@@ -3,7 +3,7 @@ import Subtotal from "./Subtotal";
 import Divider  from "./Divider";
 import { useState } from "react";
 
-const products = [
+let products = [
   {
     id: "1",
     name: "貓咪罐罐",
@@ -22,50 +22,46 @@ const products = [
 
 
 const Cart = () => {  
-  const [cartProducts, setCartProducts] = useState([...products]);
-  const newProductsData = [...cartProducts];
-  // function handleClick(id, event) {
-  //   const newProductsData =[...cartProducts]
-  //   const index = newProductsData.findIndex(newProduct => newProduct.id === id)
-  //   if(event.target.matches(".reduce")){
-  //     if (newProductsData[index].quantity > 0){
-  //       setCartProducts(
-  //         ...cartProducts,
-  //         newProductsData[index].quantity - 1
-  //       );
-  //   }} else {
-  //     setCartProducts(...cartProducts, newProductsData[index].quantity + 1);
-  //   }
-  // }
-  
+  const [cartProducts, setCartProducts] = useState(products);
+  const subtotal = cartProducts.reduce((accumulator, product) => {
+    return accumulator + product.price * product.quantity;
+  }, 0);
+ 
+ function handleClickReduce(id) {
+   const newProductItem = cartProducts.map((product) => {
+     if (product.id === id) {
+        return {
+          ...product,
+          quantity: product.quantity - 1,
+        };
+     } else {
+       return product;
+     }
+   });
+   setCartProducts(newProductItem.filter(product => product.quantity > 0));
+ }
 
-const handleClick = {
-   reduce(id) {
-    const index = newProductsData.findIndex(
-      (newProduct) => newProduct.id === id
-    );
-    if (newProductsData[index].quantity > 0) {
-      setCartProducts(...cartProducts, newProductsData[index].quantity - 1);
-    } else {
-      setCartProducts(cartProducts.splice(index, 1));
-    }
-  },
-  increase(id) {
-    const index = newProductsData.findIndex(
-      (newProduct) => newProduct.id === id
-    );
-    setCartProducts(...cartProducts, newProductsData[index].quantity + 1);
+  function handleClickIncrease(id) {
+    const newProductItem = cartProducts.map((product) => {
+      if (product.id === id) {
+        return {
+          ...product,
+          quantity: product.quantity + 1,
+        };
+      } else {
+        return product;
+      }
+    });
+    setCartProducts(newProductItem);
   }
-};
 
- const subtotal = cartProducts.reduce((accumulator, product) => {
-   return accumulator + product.price * product.quantity;
- }, 0);
+
+
   return (
     <div className="cart-container w-1/2 p-6">
       <h3 className="text-2xl font-medium">購物籃</h3>
       {cartProducts.map((product) => (
-        <ProductItem key={product.id} product={product} handleClick={handleClick} />
+        <ProductItem key={product.id} product={product} handleClickReduce={handleClickReduce} handleClickIncrease={handleClickIncrease}/>
       ))}
       <Divider />
       <Subtotal title="運費" price="免費" />

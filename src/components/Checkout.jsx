@@ -1,3 +1,5 @@
-export const Checkout = ({children}) => {
+const Checkout = ({children}) => {
   return <div className="w-1/2 p-6">{children}</div>;
 }
+
+export default Checkout
