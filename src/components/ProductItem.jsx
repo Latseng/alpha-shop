@@ -1,14 +1,15 @@
 // import "../styles/ProductItem.css"
-const ProductItem = ({product, handleClickReduce, handleClickIncrease}) => {
+const ProductItem = ({product, onClick}) => {
+  const { img, name, id, quantity, price } = product;
   return (
-    <div key={product.id} className="my-8 flex relative">
-      <img className="w-24 rounded-lg" src={product.img} alt="product-img" />
+    <div className="my-8 flex relative">
+      <img className="w-24 rounded-lg" src={img} alt="product-img" />
       <div className="ml-8">
-        <span className="product-name">{product.name}</span>
+        <span className="product-name">{name}</span>
         <div className="mt-4">
           <button
             className="reduce mr-12 w-6 h-6 text-center font-semibold bg-[#e5e5e5] rounded-full inline-block"
-            onClick={() => {handleClickReduce(product.id)}}
+            onClick={() => {onClick(id, 'decrease')}}
           >
             <svg
               className="mx-auto block"
@@ -29,10 +30,10 @@ const ProductItem = ({product, handleClickReduce, handleClickIncrease}) => {
               />
             </svg>
           </button>
-          <span className="mr-12">{product.quantity}</span>
+          <span className="mr-12">{quantity}</span>
           <button
             className="increase mr-12 w-6 h-6 font-semibold bg-[#e5e5e5] rounded-full inline-block"
-            onClick={() => handleClickIncrease(product.id)}
+            onClick={() => onClick(id, 'increase')}
           >
             <svg
               className="mx-auto block"
@@ -52,7 +53,7 @@ const ProductItem = ({product, handleClickReduce, handleClickIncrease}) => {
           </button>
         </div>
         <span className="font-bold absolute top-0 right-0">
-          ${product.quantity * product.price}
+          ${price}
         </span>
       </div>
     </div>

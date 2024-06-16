@@ -3,7 +3,7 @@ import Subtotal from "./Subtotal";
 import Divider  from "./Divider";
 import { useState } from "react";
 
-let products = [
+const products = [
   {
     id: "1",
     name: "貓咪罐罐",
@@ -26,33 +26,22 @@ const Cart = () => {
   const subtotal = cartProducts.reduce((accumulator, product) => {
     return accumulator + product.price * product.quantity;
   }, 0);
- 
- function handleClickReduce(id) {
-   const newProductItem = cartProducts.map((product) => {
-     if (product.id === id) {
-        return {
-          ...product,
-          quantity: product.quantity - 1,
-        };
-     } else {
-       return product;
-     }
-   });
-   setCartProducts(newProductItem.filter(product => product.quantity > 0));
- }
 
-  function handleClickIncrease(id) {
-    const newProductItem = cartProducts.map((product) => {
-      if (product.id === id) {
-        return {
-          ...product,
-          quantity: product.quantity + 1,
-        };
-      } else {
-        return product;
-      }
+  // 處理購物車計算
+  function handleClick(id, conrtol) {
+    const newItems = cartProducts.map((product) => {
+      if (product.id !== id) return product;
+
+      const newQuantity = conrtol === 'increase' ? product.quantity + 1 : product.quantity - 1;
+
+      return {
+        ...product,
+        quantity: newQuantity,
+      };
     });
-    setCartProducts(newProductItem);
+
+    const newCartProducts = newItems.filter(product => product.quantity > 0)
+    setCartProducts(newCartProducts)
   }
 
 
@@ -61,7 +50,7 @@ const Cart = () => {
     <div className="cart-container w-1/2 p-6">
       <h3 className="text-2xl font-medium">購物籃</h3>
       {cartProducts.map((product) => (
-        <ProductItem key={product.id} product={product} handleClickReduce={handleClickReduce} handleClickIncrease={handleClickIncrease}/>
+        <ProductItem key={product.id} product={product} onClick={handleClick} />
       ))}
       <Divider />
       <Subtotal title="運費" price="免費" />
