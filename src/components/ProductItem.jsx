@@ -52,7 +52,7 @@ const ProductItem = ({product, handleClickReduce, handleClickIncrease}) => {
           </button>
         </div>
         <span className="font-bold absolute top-0 right-0">
-          ${product.quantity * product.price}
+          {product.price}
         </span>
       </div>
     </div>

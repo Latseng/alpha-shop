@@ -1,6 +1,5 @@
-// import "../styles/Step.css"
 
-const Step3 = () => {
+const Payment = () => {
   return (
     <form className="payment-information">
       <h3 className="form-title text-3xl font-bold mb-6">付款資訊</h3>
@@ -50,4 +49,4 @@ const Step3 = () => {
   );
 }
 
-export default Step3;
+export default Payment;
