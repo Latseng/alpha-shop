@@ -7,6 +7,8 @@ import ProgressControl from "./components/ProgressControl";
 import Main from "./components/Main";
 import Checkout from "./components/Checkout";
 import Cart from "./components/Cart";
+import { CartProvider } from "./components/CartContext";
+
 
 function App() {
   const [step, setStep] = useState(1)
@@ -29,7 +31,7 @@ function App() {
   return (
     <Main>
       <Checkout>
-        <StepProgress step1={step1} step3={step3}/>
+        <StepProgress step1={step1} step3={step3} />
         {step1 && <Address />}
         {step2 && <Shipping />}
         {step3 && <Payment />}
@@ -39,7 +41,9 @@ function App() {
           step3={step3}
         />
       </Checkout>
-      <Cart />
+      <CartProvider>
+        <Cart />
+      </CartProvider>
     </Main>
   );
 }
