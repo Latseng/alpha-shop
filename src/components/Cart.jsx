@@ -2,10 +2,7 @@ import ProductItem from "./ProductItem";
 import Subtotal from "./Subtotal";
 import Divider  from "./Divider";
 import { useContext } from "react";
-import CartContext  from "./components/CartContext";
-
-
-
+import CartContext from "./CartContext";
 
 const Cart = () => {  
   const cartData = useContext(CartContext)

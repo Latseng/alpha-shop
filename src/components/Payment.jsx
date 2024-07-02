@@ -1,5 +1,8 @@
+import { useContext } from "react";
+import CheckoutContext from "./CheckoutContext";
 
 const Payment = () => {
+  const checkoutData = useContext(CheckoutContext)
   return (
     <form className="payment-information">
       <h3 className="form-title text-3xl font-bold mb-6">付款資訊</h3>
@@ -12,6 +15,9 @@ const Payment = () => {
             className="text-base pl-4 block border border-black rounded-md w-3/4 h-10"
             type="text"
             placeholder="John Doe"
+            onChange={(event) => {
+              checkoutData.handleChange(event.target.value, "name");
+            }}
           />
         </div>
         <div className="form-row card-number mb-6 w-full">
@@ -22,6 +28,9 @@ const Payment = () => {
             className="text-base pl-4 block border border-black rounded-md w-3/4 h-10"
             type="text"
             placeholder="1111 2222 3333 4444"
+            onChange={(event) => {
+              checkoutData.handleChange(event.target.value, "card-number");
+            }}
           />
         </div>
         <div className="form-row date mb-6 w-3/6">
@@ -32,6 +41,9 @@ const Payment = () => {
             className="text-base pl-4 block border border-black rounded-md w-11/12 h-10"
             type="text"
             placeholder="MM/YY"
+            onChange={(event) => {
+              checkoutData.handleChange(event.target.value, "date");
+            }}
           />
         </div>
         <div className="form-row code mb-6 w-3/6">
@@ -42,6 +54,9 @@ const Payment = () => {
             className="text-base pl-4 block border border-black rounded-md w-11/12 h-10"
             type="text"
             placeholder="123"
+            onChange={(event) => {
+              checkoutData.handleChange(event.target.value, "CCV");
+            }}
           />
         </div>
       </div>
